@@ -1,11 +1,16 @@
 import React from 'react'
+import Header from '../views/header'
+import SideBar from '../views/sidebar'
+import Main from '../views/main'
+import Footer from '../views/footer'
 
 export default function App() {
   return (
     <>
-      <span role="img" aria-label="emoji">
-        🚀 firecracker firecracker boom boom boom!
-      </span>
+      <Header />
+      <SideBar />
+      <Main />
+      <Footer />
     </>
   )
 }

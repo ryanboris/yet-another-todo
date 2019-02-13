@@ -14,6 +14,11 @@ export default function reducer(state, action) {
         ]
       }
 
+    case 'REMOVE_ALL':
+      return {
+        todos: []
+      }
+
     default:
       return [state]
   }

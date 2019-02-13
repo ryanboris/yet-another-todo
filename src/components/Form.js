@@ -29,6 +29,9 @@ export default function Form() {
         <input type="submit" />
         <input type="reset" />
       </form>
+      <button onClick={() => dispatch({ type: 'REMOVE_ALL' })}>
+        Clear All
+      </button>
     </>
   )
 }

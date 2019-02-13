@@ -1,5 +1,10 @@
 import React, { useState, useContext } from 'react'
 import TodosContext from '../context'
+import styled from 'styled-components'
+
+const FormStyle = styled.form`
+  display: none;
+`
 
 export default function Form() {
   const [input, setInput] = useState('')
@@ -19,7 +24,7 @@ export default function Form() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} onReset={handleReset}>
+      <FormStyle onSubmit={handleSubmit} onReset={handleReset}>
         <input
           type="text"
           placeholder="enter a task"
@@ -28,7 +33,7 @@ export default function Form() {
         />
         <input type="submit" />
         <input type="reset" />
-      </form>
+      </FormStyle>
       <button onClick={() => dispatch({ type: 'REMOVE_ALL' })}>
         Clear All
       </button>

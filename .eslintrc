@@ -1,0 +1,4 @@
+{
+  "extends": ["standard", "prettier", "react-app"],
+  "plugins": ["prettier", "import", "jsx-a11y", "node", "promise", "standard"]
+}

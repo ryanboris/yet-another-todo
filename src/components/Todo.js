@@ -1,5 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import TodosContext from '../context'
 
 export default function Todo() {
-  return <div>It lives</div>
+  const { state } = useContext(TodosContext)
+  return (
+    <>
+      {state.todos.map(todo => (
+        <div>{todo.text}</div>
+      ))}
+    </>
+  )
 }

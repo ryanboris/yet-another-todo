@@ -2,6 +2,9 @@ import uuidv4 from 'uuid'
 export default function reducer(state, action) {
   switch (action.type) {
     case 'ADD_TO_DO':
+      if (!action.payload) {
+        return state
+      }
       return {
         ...state,
         todos: [
@@ -20,6 +23,6 @@ export default function reducer(state, action) {
       }
 
     default:
-      return [state]
+      return state
   }
 }

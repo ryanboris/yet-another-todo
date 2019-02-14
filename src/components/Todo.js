@@ -5,9 +5,9 @@ export default function Todo() {
   const { state } = useContext(TodosContext)
   return (
     <>
-      {state.todos.map(todo => (
-        <div>{todo.text}</div>
-      ))}
+      {state.todos.map(todo => {
+        return <div key={todo.id}>{todo.text}</div>
+      })}
     </>
   )
 }

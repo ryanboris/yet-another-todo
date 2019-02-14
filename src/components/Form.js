@@ -3,12 +3,21 @@ import TodosContext from '../context'
 import styled from 'styled-components'
 
 const FormStyle = styled.form`
-  display: none;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  input:first-of-type {
+    grid-column: span 1;
+  }
+
+  input:nth-of-type(2) {
+    max-width: 50%;
+  }
 `
 
 export default function Form() {
   const [input, setInput] = useState('')
-  const { dispatch } = useContext(TodosContext)
+  const { state, dispatch } = useContext(TodosContext)
 
   const handleChange = e => setInput(e.target.value)
 
@@ -31,12 +40,14 @@ export default function Form() {
           value={input}
           onChange={handleChange}
         />
-        <input type="submit" />
-        <input type="reset" />
+        {input.length > 0 && <input type="submit" />}
+        {input.length > 0 && <input type="reset" />}
       </FormStyle>
-      <button onClick={() => dispatch({ type: 'REMOVE_ALL' })}>
-        Clear All
-      </button>
+      {state.todos.length > 0 && (
+        <button onClick={() => dispatch({ type: 'REMOVE_ALL' })}>
+          Clear All
+        </button>
+      )}
     </>
   )
 }

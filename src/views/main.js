@@ -1,9 +1,9 @@
 import React from 'react'
-import TodoCard from '../components/TodoCard'
+import TodoContainer from '../containers/TodoContainer'
 export default function Main() {
   return (
     <>
-      <TodoCard />
+      <TodoContainer />
     </>
   )
 }

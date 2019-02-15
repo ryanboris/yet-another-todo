@@ -17,9 +17,27 @@ export default function reducer(state, action) {
         ]
       }
 
-    case 'REMOVE_ALL':
+    case 'EDIT_TODO':
+      const { todos, currentTodo } = state
+      const index = state.todos.findIndex(todo => todo.id === currentTodo.id)
+      console.log(action.payload.text)
       return {
-        todos: []
+        ...state,
+        todos: [
+          ...todos.slice(0, index),
+          {
+            id: currentTodo.id,
+            completed: currentTodo.completed,
+            text: action.payload
+          },
+          ...todos.slice(index + 1)
+        ]
+      }
+
+    case 'SET_CURRENT_TODO':
+      return {
+        ...state,
+        currentTodo: action.payload
       }
 
     default:

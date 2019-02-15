@@ -3,15 +3,16 @@ import TodosContext from '../context'
 import styled from 'styled-components'
 
 const FormStyle = styled.form`
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 
-  input:first-of-type {
-    grid-column: span 1;
-  }
-
-  input:nth-of-type(2) {
-    max-width: 50%;
+  input:first-child {
+    border: 1px solid white;
+    border-radius: 2px;
+    width: 40%;
+    height: 30px;
+    box-shadow: 1px 3px 20px #00adb5;
   }
 `
 
@@ -27,7 +28,11 @@ export default function Form() {
   }
   const handleSubmit = e => {
     e.preventDefault()
-    dispatch({ type: 'ADD_TO_DO', payload: input })
+    if (state.currentTodo) {
+      dispatch({ type: 'EDIT_TODO', payload: input })
+    } else {
+      dispatch({ type: 'ADD_TO_DO', payload: input })
+    }
     setInput('')
   }
 
@@ -40,14 +45,16 @@ export default function Form() {
           value={input}
           onChange={handleChange}
         />
-        {input.length > 0 && <input type="submit" />}
-        {input.length > 0 && <input type="reset" />}
+        <input type="submit" />
+        <input type="reset" />
+        {state.todos.length > 0 && (
+          <input
+            type="submit"
+            value="Clear All"
+            onClick={() => dispatch({ type: 'REMOVE_ALL' })}
+          />
+        )}
       </FormStyle>
-      {state.todos.length > 0 && (
-        <button onClick={() => dispatch({ type: 'REMOVE_ALL' })}>
-          Clear All
-        </button>
-      )}
     </>
   )
 }

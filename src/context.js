@@ -1,7 +1,8 @@
 import React from 'react'
 
 const TodosContext = React.createContext({
-  todos: []
+  todos: [],
+  currentTodo: null
 })
 
 export default TodosContext

@@ -1,10 +1,13 @@
 import React from 'react'
-import TodoCard from '../components/TodoCard'
+import Todo from '../components/Todo'
+import styled from 'styled-components/macro'
+import Form from '../components/Form'
 
 export default function TodoContainer() {
   return (
     <>
-      <TodoCard />
+      <Form />
+      <Todo />
     </>
   )
 }

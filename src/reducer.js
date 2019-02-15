@@ -20,7 +20,7 @@ export default function reducer(state, action) {
     case 'EDIT_TODO':
       const { todos, currentTodo } = state
       const index = state.todos.findIndex(todo => todo.id === currentTodo.id)
-      console.log(action.payload.text)
+
       return {
         ...state,
         todos: [
@@ -31,7 +31,8 @@ export default function reducer(state, action) {
             text: action.payload
           },
           ...todos.slice(index + 1)
-        ]
+        ],
+        currentTodo: ''
       }
 
     case 'SET_CURRENT_TODO':

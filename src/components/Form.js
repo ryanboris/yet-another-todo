@@ -18,7 +18,10 @@ const FormStyle = styled.form`
 
 export default function Form() {
   const [input, setInput] = useState('')
-  const { state, dispatch } = useContext(TodosContext)
+  const {
+    state: { todos, currentTodo = {} },
+    dispatch
+  } = useContext(TodosContext)
 
   const handleChange = e => setInput(e.target.value)
 
@@ -28,7 +31,7 @@ export default function Form() {
   }
   const handleSubmit = e => {
     e.preventDefault()
-    if (state.currentTodo) {
+    if (currentTodo.text) {
       dispatch({ type: 'EDIT_TODO', payload: input })
     } else {
       dispatch({ type: 'ADD_TO_DO', payload: input })
@@ -47,7 +50,7 @@ export default function Form() {
         />
         <input type="submit" />
         <input type="reset" />
-        {state.todos.length > 0 && (
+        {todos.length > 0 && (
           <input
             type="submit"
             value="Clear All"

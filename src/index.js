@@ -8,13 +8,13 @@ import Sidebar from './views/sidebar'
 import Footer from './views/footer'
 
 const App = () => {
-  const initialState      = useContext(TodosContext)
+  const initialState = useContext(TodosContext)
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <>
       <Header />
       <Sidebar />
-      <TodosContext.Provider value = {{ state, dispatch }}>
+      <TodosContext.Provider value={{ state, dispatch }}>
         <Main />
       </TodosContext.Provider>
       <Footer />
@@ -22,4 +22,11 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <App
+    css={`
+      maxheight: 100vh;
+    `}
+  />,
+  document.getElementById('root')
+)

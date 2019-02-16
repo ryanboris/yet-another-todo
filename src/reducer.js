@@ -18,9 +18,11 @@ export default function reducer(state, action) {
       }
 
     case 'EDIT_TODO':
-      const { todos, currentTodo } = state
+      const { todos, currentTodo, isEditing } = state
       const index = state.todos.findIndex(todo => todo.id === currentTodo.id)
-
+      if (!action.payload) {
+        return state
+      }
       return {
         ...state,
         todos: [
@@ -32,15 +34,28 @@ export default function reducer(state, action) {
           },
           ...todos.slice(index + 1)
         ],
-        currentTodo: ''
+        currentTodo: '',
+        isEditing: !isEditing
       }
 
     case 'SET_CURRENT_TODO':
       return {
         ...state,
-        currentTodo: action.payload
+        currentTodo: action.payload,
+        isEditing: !isEditing
       }
 
+    case 'REMOVE_ALL':
+      return {
+        ...state,
+        todos: []
+      }
+
+    case 'TOGGLE_EDIT':
+      return {
+        ...state,
+        isEditing: false
+      }
     default:
       return state
   }

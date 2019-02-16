@@ -19,7 +19,7 @@ const FormStyle = styled.form`
 export default function Form() {
   const [input, setInput] = useState('')
   const {
-    state: { todos, currentTodo = {} },
+    state: { currentTodo = {} },
     dispatch
   } = useContext(TodosContext)
 
@@ -47,16 +47,10 @@ export default function Form() {
           placeholder="enter a task"
           value={input}
           onChange={handleChange}
+          maxLength={128}
         />
         <input type="submit" />
         <input type="reset" />
-        {todos.length > 0 && (
-          <input
-            type="submit"
-            value="Clear All"
-            onClick={() => dispatch({ type: 'REMOVE_ALL' })}
-          />
-        )}
       </FormStyle>
     </>
   )

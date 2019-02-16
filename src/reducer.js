@@ -38,6 +38,13 @@ export default function reducer(state, action) {
         isEditing: !isEditing
       }
 
+    case 'DELETE_TODO':
+      const index = state.todos.findIndex(todo => todo.id === action.payload.id)
+      return {
+        ...state,
+        todos: [...state.todos.slice(0, index), ...state.todos.slice(index + 1)]
+      }
+
     case 'SET_CURRENT_TODO':
       return {
         ...state,

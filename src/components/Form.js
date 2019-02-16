@@ -1,18 +1,29 @@
 import React, { useState, useContext } from 'react'
 import TodosContext from '../context'
-import styled from 'styled-components'
+import AddIcon from '@material-ui/icons/Add'
+import styled, { css } from 'styled-components'
 
 const FormStyle = styled.form`
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: center;
 
   input:first-child {
-    border: 1px solid white;
-    border-radius: 2px;
+    border: 1px solid #393e46;
+    border-radius: 20px;
     width: 40%;
     height: 30px;
-    box-shadow: 1px 3px 20px #00adb5;
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    font-size: 0.8rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+  }
+
+  .icon {
+    transform: scale(1.7);
+    margin-top: 22px;
   }
 `
 
@@ -40,7 +51,12 @@ export default function Form() {
   }
 
   return (
-    <>
+    <div
+      css={css`
+        max-width: 1000px;
+        margin: 0 auto;
+      `}
+    >
       <FormStyle onSubmit={handleSubmit} onReset={handleReset}>
         <input
           type="text"
@@ -49,9 +65,8 @@ export default function Form() {
           onChange={handleChange}
           maxLength={128}
         />
-        <input type="submit" />
-        <input type="reset" />
+        <AddIcon onClick={handleSubmit} className="icon" />
       </FormStyle>
-    </>
+    </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import TodosContext from '../context'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,6 +14,9 @@ const Card = styled.div`
   width: 20%;
   height: auto;
   word-wrap: break-word;
+  border-radius: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
 `
 
 const CardContents = styled.div`
@@ -25,38 +28,73 @@ const CardContents = styled.div`
   .cancel-icon {
     transform: scale(1.2);
   }
+
   .pencil-icon {
     margin-right: 10%;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 4vw;
+    height: auto;
+    word-wrap: break-word;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #393e46;
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: bolder;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
   }
 `
 
 export default function Todo() {
   const { state, dispatch } = useContext(TodosContext)
+  const { isEditing } = state
   return state.todos.map(todo => {
     return (
       <>
         <Card key={todo.id}>
-          <p>{todo.text}</p>
-          {state.isEditing && <Form />}
-          {state.isEditing && (
-            <button onClick={() => dispatch({ type: 'TOGGLE_EDIT' })}>
-              Cancel Edit
-            </button>
-          )}
+          {!state.isEditing ? <p>{todo.text}</p> : <Form />}
           <CardContents>
-            <FontAwesomeIcon
-              className="pencil-icon"
-              icon={faPencil}
-              onClick={() => {
-                dispatch({ type: 'SET_CURRENT_TODO', payload: todo })
-              }}
-            />
+            {!isEditing ? (
+              <FontAwesomeIcon
+                className="pencil-icon"
+                icon={faPencil}
+                onClick={() => {
+                  dispatch({ type: 'SET_CURRENT_TODO', payload: todo })
+                }}
+              />
+            ) : (
+              <div className="tooltip">
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  onClick={() => dispatch({ type: 'TOGGLE_EDIT' })}
+                />
+                <span className="tooltiptext">cancel edit</span>
+              </div>
+            )}
 
-            <FontAwesomeIcon
-              icon={faTimes}
-              className="cancel-icon"
-              onClick={() => dispatch({ type: 'DELETE_TODO', payload: todo })}
-            />
+            {!isEditing && (
+              <FontAwesomeIcon
+                icon={faTimes}
+                className="cancel-icon"
+                onClick={() => dispatch({ type: 'DELETE_TODO', payload: todo })}
+              />
+            )}
           </CardContents>
         </Card>
       </>

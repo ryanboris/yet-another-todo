@@ -19,20 +19,20 @@ export default function reducer(state, action) {
 
     case 'EDIT_TODO':
       const { todos, currentTodo, isEditing } = state
-      const index = state.todos.findIndex(todo => todo.id === currentTodo.id)
-      if (!action.payload) {
-        return state
-      }
+      const { id, completed } = currentTodo
+      const i = state.todos.findIndex(todo => todo.id === id)
+      if (!action.payload) return state
+      if (i === -1) throw new Error(`Task does not exist.`)
       return {
         ...state,
         todos: [
-          ...todos.slice(0, index),
+          ...todos.slice(0, i),
           {
-            id: currentTodo.id,
-            completed: currentTodo.completed,
+            id,
+            completed,
             text: action.payload
           },
-          ...todos.slice(index + 1)
+          ...todos.slice(i + 1)
         ],
         currentTodo: '',
         isEditing: !isEditing

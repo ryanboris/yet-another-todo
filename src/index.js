@@ -6,27 +6,23 @@ import Main from './views/main'
 import Header from './views/header'
 import Sidebar from './views/sidebar'
 import Footer from './views/footer'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 const App = () => {
   const initialState = useContext(TodosContext)
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <>
-      <Header />
-      <Sidebar />
-      <TodosContext.Provider value={{ state, dispatch }}>
-        <Main />
-      </TodosContext.Provider>
-      <Footer />
+      <CssBaseline>
+        <Header />
+        <Sidebar />
+        <TodosContext.Provider value={{ state, dispatch }}>
+          <Main />
+        </TodosContext.Provider>
+        <Footer />
+      </CssBaseline>
     </>
   )
 }
 
-ReactDOM.render(
-  <App
-    css={`
-      maxheight: 100vh;
-    `}
-  />,
-  document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))

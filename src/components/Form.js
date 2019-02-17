@@ -13,10 +13,8 @@ const FormStyle = styled.form`
     border-radius: 20px;
     width: 40%;
     height: 30px;
-    margin-top: 20px;
-    margin-right: 50px;
-    margin-bottom: 50px;
-    font-size: 0.8rem;
+    margin: 20px 10% 50px 0px;
+    font-size: 1rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
   }
@@ -27,10 +25,18 @@ const FormStyle = styled.form`
   }
 `
 
+const TooManyTodos = styled.div`
+  width: 90vw;
+  height: 5vh;
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+`
+
 export default function Form() {
   const [input, setInput] = useState('')
   const {
-    state: { currentTodo = {} },
+    state: { currentTodo = {}, todos },
     dispatch
   } = useContext(TodosContext)
 
@@ -57,16 +63,22 @@ export default function Form() {
         margin: 0 auto;
       `}
     >
-      <FormStyle onSubmit={handleSubmit} onReset={handleReset}>
-        <input
-          type="text"
-          placeholder="enter a task"
-          value={input}
-          onChange={handleChange}
-          maxLength={128}
-        />
-        <AddIcon onClick={handleSubmit} className="icon" />
-      </FormStyle>
+      {todos.length < 12 ? (
+        <FormStyle onSubmit={handleSubmit} onReset={handleReset}>
+          <input
+            type="text"
+            placeholder="enter a task"
+            value={input}
+            onChange={handleChange}
+            maxLength={128}
+          />
+          <AddIcon onClick={handleSubmit} className="icon" />
+        </FormStyle>
+      ) : (
+        <TooManyTodos>
+          Full of Do's - Please complete tasks before you continue
+        </TooManyTodos>
+      )}
     </div>
   )
 }

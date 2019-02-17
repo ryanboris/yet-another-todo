@@ -1,5 +1,5 @@
 import React from 'react'
-import Todo from '../components/Todo'
+import TodoCard from '../components/TodoCard'
 import styled from 'styled-components/macro'
 
 const Container = styled.div`
@@ -10,8 +10,10 @@ const Container = styled.div`
 
 export default function TodoContainer() {
   return (
-    <Container>
-      <Todo style={{ width: '25vw' }} />
-    </Container>
+    <>
+      <Container>
+        <TodoCard style={{ width: '25vw' }} />
+      </Container>
+    </>
   )
 }

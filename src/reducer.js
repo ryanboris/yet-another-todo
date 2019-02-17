@@ -55,13 +55,16 @@ export default function reducer(state, action) {
     case 'REMOVE_ALL':
       return {
         ...state,
-        todos: []
+        todos: [],
+        currentTodo: '',
+        isEditing: false
       }
 
     case 'TOGGLE_EDIT':
       return {
         ...state,
-        isEditing: false
+        isEditing: false,
+        currentTodo: ''
       }
     default:
       return state

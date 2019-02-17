@@ -61,13 +61,13 @@ const CardContents = styled.div`
   }
 `
 
-export default function Todo() {
+export default function TodoCard() {
   const { state, dispatch } = useContext(TodosContext)
   const { isEditing } = state
   return state.todos.map(todo => {
     return (
-      <>
-        <Card key={todo.id}>
+      <React.Fragment key={todo.id}>
+        <Card>
           {!state.isEditing ? <p>{todo.text}</p> : <Form />}
           <CardContents>
             {!isEditing ? (
@@ -84,7 +84,12 @@ export default function Todo() {
                   icon={faTimes}
                   onClick={() => dispatch({ type: 'TOGGLE_EDIT' })}
                 />
-                <span className="tooltiptext">cancel edit</span>
+                <span
+                  onClick={() => dispatch({ type: 'TOGGLE_EDIT' })}
+                  className="tooltiptext"
+                >
+                  cancel edit
+                </span>
               </div>
             )}
 
@@ -97,7 +102,7 @@ export default function Todo() {
             )}
           </CardContents>
         </Card>
-      </>
+      </React.Fragment>
     )
   })
 }

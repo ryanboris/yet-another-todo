@@ -46,10 +46,12 @@ export default function reducer(state, action) {
       }
 
     case 'SET_CURRENT_TODO':
+      console.log(action.payload.id)
       return {
         ...state,
         currentTodo: action.payload,
-        isEditing: !isEditing
+        isEditing: !isEditing,
+        currentId: action.payload.id
       }
 
     case 'REMOVE_ALL':

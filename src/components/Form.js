@@ -67,7 +67,7 @@ export default function Form() {
         <FormStyle onSubmit={handleSubmit} onReset={handleReset}>
           <input
             type="text"
-            placeholder="enter a task"
+            placeholder="task"
             value={input}
             onChange={handleChange}
             maxLength={128}

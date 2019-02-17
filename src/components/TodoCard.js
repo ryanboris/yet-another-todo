@@ -70,7 +70,14 @@ export default function TodoCard() {
     return (
       <React.Fragment key={todo.id}>
         <Card>
-          {!state.isEditing ? <p>{todo.text}</p> : <Form />}
+          {!state.isEditing ? (
+            <p>{todo.text}</p>
+          ) : (
+            <>
+              <Form />
+              {todo.text}
+            </>
+          )}
           <CardContents>
             {!isEditing ? (
               <FontAwesomeIcon

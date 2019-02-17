@@ -9,11 +9,11 @@ const FormStyle = styled.form`
   justify-content: center;
 
   input:first-child {
-    border: 1px solid #393e46;
+    border: 2px solid #393e46;
     border-radius: 20px;
-    width: 40%;
+    width: 55vw;
     height: 30px;
-    margin: 20px 10% 50px 0px;
+    margin: 20px 0 40px 1%;
     font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
       Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -22,7 +22,7 @@ const FormStyle = styled.form`
 
   .icon {
     transform: scale(1.7);
-    margin-top: 22px;
+    margin: 22px 5% 0 2%;
   }
 `
 

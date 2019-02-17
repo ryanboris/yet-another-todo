@@ -13,7 +13,8 @@ const Container = styled.header`
     font-size: 7rem;
     line-height: 20px;
     color: #00adb5;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 0 3% 0 0;
     span:nth-of-type(2) {
       font-size: 3rem;

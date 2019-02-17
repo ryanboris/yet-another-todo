@@ -15,7 +15,8 @@ const Card = styled.div`
   height: auto;
   word-wrap: break-word;
   border-radius: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1rem;
 `
 
@@ -44,7 +45,8 @@ const CardContents = styled.div`
     width: 4vw;
     height: auto;
     word-wrap: break-word;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #393e46;
     color: #fff;
     font-size: 0.6rem;
@@ -84,12 +86,7 @@ export default function TodoCard() {
                   icon={faTimes}
                   onClick={() => dispatch({ type: 'TOGGLE_EDIT' })}
                 />
-                <span
-                  onClick={() => dispatch({ type: 'TOGGLE_EDIT' })}
-                  className="tooltiptext"
-                >
-                  cancel edit
-                </span>
+                <span className="tooltiptext">cancel edit</span>
               </div>
             )}
 

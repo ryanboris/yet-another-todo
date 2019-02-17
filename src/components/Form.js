@@ -15,7 +15,8 @@ const FormStyle = styled.form`
     height: 30px;
     margin: 20px 10% 50px 0px;
     font-size: 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
   }
 
@@ -29,7 +30,8 @@ const TooManyTodos = styled.div`
   width: 90vw;
   height: 5vh;
   font-size: 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
 `
 

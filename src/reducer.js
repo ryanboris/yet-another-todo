@@ -50,8 +50,7 @@ export default function reducer(state, action) {
       return {
         ...state,
         currentTodo: action.payload,
-        isEditing: !isEditing,
-        currentId: action.payload.id
+        isEditing: true
       }
 
     case 'REMOVE_ALL':
@@ -65,8 +64,7 @@ export default function reducer(state, action) {
     case 'TOGGLE_EDIT':
       return {
         ...state,
-        isEditing: false,
-        currentTodo: ''
+        isEditing: false
       }
     default:
       return state

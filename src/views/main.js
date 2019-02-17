@@ -11,6 +11,7 @@ export default function Main() {
     <div
       css={`
         position: relative;
+        font-family:  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       `}
     >
       {!state.isEditing && state.todos.length < 12 && (

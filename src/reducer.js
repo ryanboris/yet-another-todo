@@ -64,7 +64,8 @@ export default function reducer(state, action) {
     case 'TOGGLE_EDIT':
       return {
         ...state,
-        isEditing: false
+        isEditing: false,
+        currentTodo: ''
       }
     default:
       return state

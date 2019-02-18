@@ -8,15 +8,14 @@ import Form from './Form'
 const Card = styled.div`
   border: 1px solid black;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.7);
-  margin: 20px;
-  padding: 20px;
   display: inline-block;
-  width: 20%;
+  margin: 10px 2%;
+  padding: 2%;
+  width: 20vw;
+  min-width: 20vw;
   height: auto;
   word-wrap: break-word;
   border-radius: 5px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1rem;
 `
 

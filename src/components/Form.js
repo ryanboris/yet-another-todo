@@ -1,28 +1,30 @@
 import React, { useState, useContext } from 'react'
 import TodosContext from '../context'
 import AddIcon from '@material-ui/icons/Add'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/pro-solid-svg-icons'
 
 const FormStyle = styled.form`
   display: flex;
   width: 100%;
-  justify-content: center;
+  height: 25vh;
+  justify-content: space-evenly;
+  align-items: center;
 
   input:first-child {
     border: 2px solid #393e46;
     border-radius: 20px;
-    width: 55vw;
-    height: 30px;
-    margin: 20px 0 40px 1%;
-    font-size: 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-      Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 50%;
+    min-width: 40%;
+    height: 2vh;
+    font-size: 1.2rem;
     text-align: center;
+    margin: 0 4% 0 0;
   }
 
   .icon {
     transform: scale(1.7);
-    margin: 22px 5% 0 2%;
   }
 `
 
@@ -30,15 +32,13 @@ const TooManyTodos = styled.div`
   width: 90vw;
   height: 5vh;
   font-size: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
 `
 
 export default function Form() {
   const [input, setInput] = useState('')
   const {
-    state: { currentTodo = {}, todos },
+    state: { currentTodo = {}, todos, isEditing },
     dispatch
   } = useContext(TodosContext)
 
@@ -59,12 +59,7 @@ export default function Form() {
   }
 
   return (
-    <div
-      css={css`
-        max-width: 1000px;
-        margin: 0 auto;
-      `}
-    >
+    <div>
       {todos.length < 12 ? (
         <FormStyle onSubmit={handleSubmit} onReset={handleReset}>
           <input
@@ -75,6 +70,13 @@ export default function Form() {
             maxLength={128}
           />
           <AddIcon onClick={handleSubmit} className="icon" />
+          {!isEditing && todos.length < 12 && (
+            <FontAwesomeIcon
+              icon={faTimes}
+              size="2x"
+              onClick={() => dispatch({ type: 'REMOVE_ALL' })}
+            />
+          )}
         </FormStyle>
       ) : (
         <TooManyTodos>

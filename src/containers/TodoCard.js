@@ -3,7 +3,7 @@ import TodosContext from '../context'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencil, faTimes } from '@fortawesome/pro-solid-svg-icons'
-import Form from './Form'
+import Form from '../components/Form'
 
 const Card = styled.div`
   border: 1px solid black;

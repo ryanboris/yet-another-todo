@@ -26,13 +26,13 @@ export default function reducer(state, action) {
       return {
         ...state,
         todos: [
-          ...todos.slice(0, i),
+          ...state.notTodos.slice(0, i),
           {
             id,
             completed,
             text: action.payload
           },
-          ...todos.slice(i + 1)
+          ...state.notTodos.slice(i + 1)
         ],
         currentTodo: '',
         isEditing: !isEditing
@@ -49,6 +49,8 @@ export default function reducer(state, action) {
       console.log(action.payload.id)
       return {
         ...state,
+        todos: state.todos.filter(todo => todo.id === action.payload.id),
+        notTodos: state.todos.filter(todo => todo.id !== action.payload.id),
         currentTodo: action.payload,
         isEditing: true
       }

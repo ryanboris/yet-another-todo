@@ -8,7 +8,7 @@ import { faTimes } from '@fortawesome/pro-solid-svg-icons'
 const FormStyle = styled.form`
   display: flex;
   width: 100%;
-  height: 25vh;
+  height: 15vh;
   justify-content: space-evenly;
   align-items: center;
 
@@ -29,9 +29,19 @@ const FormStyle = styled.form`
 `
 
 const TooManyTodos = styled.div`
-  width: 90vw;
-  height: 5vh;
-  font-size: 1rem;
+  width: 80vw;
+  border-radius: 40px;
+  border: 2px solid #393e46;
+  margin: 0 auto 10vh auto;
+  max-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  word-wrap: break-word;
+  font-size: 1.5rem;
+  color: #393e46;
+  background: #00adb5;
   text-align: center;
 `
 
@@ -79,9 +89,7 @@ export default function Form() {
           )}
         </FormStyle>
       ) : (
-        <TooManyTodos>
-          Full of Do's - Please complete tasks before you continue
-        </TooManyTodos>
+        <TooManyTodos>Complete 1 task to continue.</TooManyTodos>
       )}
     </div>
   )

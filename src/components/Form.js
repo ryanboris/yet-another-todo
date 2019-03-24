@@ -2,8 +2,6 @@ import React, { useState, useContext } from 'react'
 import TodosContext from '../context'
 import AddIcon from '@material-ui/icons/Add'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/pro-solid-svg-icons'
 
 const FormStyle = styled.form`
   display: flex;
@@ -77,15 +75,13 @@ export default function Form() {
             placeholder="task"
             value={input}
             onChange={handleChange}
-            maxLength={128}
+            maxLength="128"
           />
           <AddIcon onClick={handleSubmit} className="icon" />
           {!isEditing && todos.length < 12 && (
-            <FontAwesomeIcon
-              icon={faTimes}
-              size="2x"
-              onClick={() => dispatch({ type: 'REMOVE_ALL' })}
-            />
+            <button onClick={() => dispatch({ type: 'REMOVE_ALL' })}>
+              REMOVE ALL
+            </button>
           )}
         </FormStyle>
       ) : (

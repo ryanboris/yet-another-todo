@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import TodosContext from '../context'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencil, faTimes } from '@fortawesome/pro-solid-svg-icons'
 import Form from './Form'
 
 const Card = styled.div`
@@ -44,8 +42,8 @@ const CardContents = styled.div`
     width: 4vw;
     height: auto;
     word-wrap: break-word;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-      Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #393e46;
     color: #fff;
     font-size: 0.6rem;
@@ -79,29 +77,26 @@ export default function TodoCard() {
           )}
           <CardContents>
             {!isEditing ? (
-              <FontAwesomeIcon
-                className="pencil-icon"
-                icon={faPencil}
+              <button
                 onClick={() => {
                   dispatch({ type: 'SET_CURRENT_TODO', payload: todo })
                 }}
-              />
+              >
+                Edit
+              </button>
             ) : (
               <div className="tooltip">
-                <FontAwesomeIcon
-                  icon={faTimes}
-                  onClick={() => dispatch({ type: 'TOGGLE_EDIT' })}
-                />
+                <div onClick={() => dispatch({ type: 'TOGGLE_EDIT' })} />
                 <span className="tooltiptext">cancel edit</span>
               </div>
             )}
 
             {!isEditing && (
-              <FontAwesomeIcon
-                icon={faTimes}
-                className="cancel-icon"
+              <button
                 onClick={() => dispatch({ type: 'DELETE_TODO', payload: todo })}
-              />
+              >
+                Delete
+              </button>
             )}
           </CardContents>
         </Card>

@@ -18,7 +18,7 @@ export default function reducer(state, action) {
       }
 
     case 'EDIT_TODO':
-      const { todos, currentTodo, isEditing } = state
+      const { currentTodo, isEditing } = state
       const { id, completed } = currentTodo
       const i = state.todos.findIndex(todo => todo.id === id)
       if (!action.payload) return state

@@ -1,26 +1,4 @@
-import React, { useContext, useReducer } from 'react'
-import ReactDOM from 'react-dom'
-import TodosContext from './context'
-import reducer from './reducer'
-import Main from './views/main'
-import Header from './views/header'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import React from 'react'
+import {render} from 'react-dom'
 
-import './index.css'
-
-const App = () => {
-  const initialState = useContext(TodosContext)
-  const [state, dispatch] = useReducer(reducer, initialState)
-  return (
-    <>
-      <CssBaseline>
-        <TodosContext.Provider value={{ state, dispatch }}>
-          <Header />
-          <Main />
-        </TodosContext.Provider>
-      </CssBaseline>
-    </>
-  )
-}
-
-ReactDOM.render(<App />, document.getElementById('root'))
+render(<div>start over</div>, document.getElementById('root') )

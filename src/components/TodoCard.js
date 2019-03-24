@@ -60,47 +60,4 @@ const CardContents = styled.div`
   }
 `
 
-export default function TodoCard() {
-  const { state, dispatch } = useContext(TodosContext)
-  const { isEditing } = state
-  return state.todos.map((todo, i) => {
-    return (
-      <React.Fragment key={todo.id}>
-        <Card className={i}>
-          {!state.isEditing ? (
-            <p>{todo.text}</p>
-          ) : (
-            <>
-              <Form />
-              {todo.text}
-            </>
-          )}
-          <CardContents>
-            {!isEditing ? (
-              <button
-                onClick={() => {
-                  dispatch({ type: 'SET_CURRENT_TODO', payload: todo })
-                }}
-              >
-                Edit
-              </button>
-            ) : (
-              <div className="tooltip">
-                <div onClick={() => dispatch({ type: 'TOGGLE_EDIT' })} />
-                <span className="tooltiptext">cancel edit</span>
-              </div>
-            )}
-
-            {!isEditing && (
-              <button
-                onClick={() => dispatch({ type: 'DELETE_TODO', payload: todo })}
-              >
-                Delete
-              </button>
-            )}
-          </CardContents>
-        </Card>
-      </React.Fragment>
-    )
-  })
-}
+export default function TodoCard() {}
